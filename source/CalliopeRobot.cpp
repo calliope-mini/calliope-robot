@@ -1,3 +1,16 @@
+/**
+ * Calliope Robot.
+ *
+ * The robot is very simple, it only knows how to handle motor speeds it receives.
+ *
+ * @copyright (c) Calliope gGmbH.
+ *
+ * Licensed under the Apache Software License 2.0 (ASL 2.0)
+ * Portions (c) Copyright British Broadcasting Corporation under MIT License.
+ *
+ * @author Matthias L. Jugel <leo@calliope.cc>
+ */
+
 #include "CalliopeRobot.h"
 
 #include "MicroBit.h"
@@ -11,6 +24,10 @@ MicroBit uBit;
 uint8_t speedLeft = 0;
 uint8_t speedRight = 0;
 
+/**
+ * This function is called whenever we receive data. The data packets
+ * contain control information for the robot, what to do.
+ */
 void onData(MicroBitEvent event) {
     PacketBuffer packet = uBit.radio.datagram.recv();
 
@@ -42,10 +59,12 @@ void onData(MicroBitEvent event) {
 int main() {
     uBit.init();
 
+    // initialize the radio and hookup function
     uBit.messageBus.listen(MICROBIT_ID_RADIO, MICROBIT_RADIO_EVT_DATAGRAM, onData);
     uBit.radio.enable();
     uBit.radio.setGroup(RADIO_GROUP);
 
+    // start the engines!
     uBit.soundmotor.motorAOn(100);
     uBit.soundmotor.motorBOn(100);
 
