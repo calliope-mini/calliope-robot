@@ -38,7 +38,7 @@ The robots display will show a `<` if turning left, a `>` if turning right, and 
 
 Author: Matthias L. Jugel ([@thinkberg](https://github.com/thinkberg))
 
-Licensed under the Apache Software License 2.0, see LICENE.
+Licensed under the Apache Software License 2.0, see LICENSE.
  
 
  
