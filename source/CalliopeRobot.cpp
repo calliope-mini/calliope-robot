@@ -29,6 +29,7 @@ uint8_t speedRight = 0;
  * contain control information for the robot, what to do.
  */
 void onData(MicroBitEvent event) {
+    (void)event;
     PacketBuffer packet = uBit.radio.datagram.recv();
 
     switch(packet.getByte(0)) {

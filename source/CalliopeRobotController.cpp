@@ -25,7 +25,8 @@ uint8_t speedRight = 0;
 /**
  * Send a brake signal, which shortly stops the robot.
  */
-void sendBrake(MicroBitEvent e) {
+void sendBrake(MicroBitEvent event) {
+    (void)event;
     uBit.serial.printf("Robot: brake\r\n");
     uBit.radio.datagram.send("B");
 }
