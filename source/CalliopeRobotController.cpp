@@ -62,10 +62,10 @@ int main() {
         if (nx != x || ny != y) {
 
             // set speed using the pitch and turn left and right using the roll of the board
-            int speed = 100 - ((dx + 1024) * 100 / 2048);
-            int direction = (dy * 100 / 1024) / 10;
-            speedLeft = (uint8_t) ((speed - (direction * 10) / 2) / 10);
-            speedRight = (uint8_t) ((speed + (direction * 10) / 2) / 10);
+            int speed = 100 - ((dy + 1024) * 100 / 2048);
+            int direction = (dx * 100 / 1024) / 10;
+            speedLeft = (uint8_t) ((speed + (direction * 10) / 2) / 10);
+            speedRight = (uint8_t) ((speed - (direction * 10) / 2) / 10);
             uBit.serial.printf("L/R: %d/%d\r\n", speedLeft, speedRight);
             speedLeft = Speeds[speedLeft > 9 ? 9 : speedLeft];
             speedRight = Speeds[speedRight > 9 ? 9 : speedRight];
@@ -79,7 +79,7 @@ int main() {
             x = nx;
             y = ny;
             uBit.display.image.clear();
-            uBit.display.image.setPixelValue(y, x, 255);
+            uBit.display.image.setPixelValue(x, y, 255);
         }
     }
 }
